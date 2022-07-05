@@ -1,0 +1,17 @@
+package com.rdk.news123.api
+
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+
+object RetrofitHelper {
+    private const val BASE_URL="https://newsapi.org/v2/"
+
+    fun getInstance():Retrofit{
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+    }
+}
